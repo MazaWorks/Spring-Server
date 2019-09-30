@@ -1,4 +1,4 @@
-package com.example.demo.daos.mysql;
+package com.example.demo.daos;
 
 import com.example.demo.dtos.Consulta1Dtos;
 
@@ -6,7 +6,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DAO {
+public class DAOConsulta {
 
     private String dbUrl = "jdbc:mysql://localhost:3306/juegosolimpicos?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private String dbUser = "root";

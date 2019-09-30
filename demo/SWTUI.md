@@ -22,38 +22,8 @@ Este servidor se ha creado usando estas tecnologías:
 
 ### Despliege de la aplicación
 
-Precondicion: Antes de lanzar la aplicación hay que asegurar que se tiene instalado mysql y MongoDB     
-Primero instale Docker en su pc.    
-Para la instalación de MongoDB, puedes guardar un fichero stack.yml que contenga lo siguiente:
+Precondicion: Antes de lanzar la aplicación hay que asegurar que se tiene instalado mysql.    
 
-    version: '3.1'
-     services:
-       mongo:
-         image: mongo
-         restart: always
-         ports:
-           - 27017:27017   
-         environment:
-           MONGO_INITDB_ROOT_USERNAME: root
-           MONGO_INITDB_ROOT_PASSWORD: example
-    
-       mongo-express:   
-         image: mongo-express
-         restart: always
-         ports:
-           - 8081:8081
-         environment:
-           ME_CONFIG_MONGODB_ADMINUSERNAME: root
-           ME_CONFIG_MONGODB_ADMINPASSWORD: example
-
-Luego guardas un .bash que tenga los siguientes comandos:  
-```sh 
-cd /*Ruta donde esta ubicado el fichero stack.yml*/     
-docker-compose -f stack.yml up  
-PAUSE
-```
-
-Antes de lanzar el servidor ejecutamos este .bat
 Hay muchas formas de lanzar el servidor.
 La primera sería simplemente importar el proyecto y ejecutar el main en el Intellij IDEA y spring boot se encargará del resto.
 

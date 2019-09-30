@@ -1,6 +1,5 @@
 package com.example.demo.daos;
 
-import com.example.demo.daos.mysql.DAO;
 import com.example.demo.dtos.Consulta1Dtos;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,12 +12,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DAOTest {
 
-    private DAO dao;
+    private DAOConsulta daoConsulta;
     private List<Consulta1Dtos> resultFine = new ArrayList<>();
 
     @BeforeEach
     void setUp() {
-        dao = new DAO();
+        daoConsulta = new DAOConsulta();
         resultFine.add(new Consulta1Dtos(1, "ESPAÑA", 1, "LA CORUÑA", 93, "NULL", 0));
         resultFine.add(new Consulta1Dtos(1, "ESPAÑA", 2, "MADRID", 100, "NULL", 0));
         resultFine.add(new Consulta1Dtos(1, "ESPAÑA", 3, "BARCELONA", 124, "INVIERNO", 1));
@@ -35,7 +34,7 @@ class DAOTest {
 
     @Test
     void get() {
-        List<Consulta1Dtos> resultReal = dao.get();
+        List<Consulta1Dtos> resultReal = daoConsulta.get();
         int x = 0;
         while(x < resultFine.size()) {
             assertEquals(resultReal.get(x).getDescripcionTipo(), resultFine.get(x).getDescripcionTipo());

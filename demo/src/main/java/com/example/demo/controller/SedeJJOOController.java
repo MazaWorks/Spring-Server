@@ -3,7 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.daos.mongo.DAODelete;
 import com.example.demo.daos.mongo.DAOGets;
 import com.example.demo.daos.mongo.DAOPosts;
-import com.example.demo.daos.mysql.DAO;
+import com.example.demo.daos.DAOConsulta;
 import com.example.demo.dtos.Consulta1Dtos;
 import com.example.demo.dtos.FullDtos.SedeJJOOFullDtos;
 import com.example.demo.dtos.SedeJJOODtos;
@@ -37,8 +37,8 @@ public class SedeJJOOController {
 
     @GetMapping("consulta")
     ResponseEntity getConsulta(){
-        DAO dao = new DAO();
-        List<Consulta1Dtos> toret = dao.get();
+        DAOConsulta daoConsulta = new DAOConsulta();
+        List<Consulta1Dtos> toret = daoConsulta.get();
     //    daoGets.create(toret, HttpStatus.OK.toString());
         return new ResponseEntity(toret, HttpStatus.OK);
     }
