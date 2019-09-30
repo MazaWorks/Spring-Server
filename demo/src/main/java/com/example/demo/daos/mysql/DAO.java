@@ -1,6 +1,5 @@
 package com.example.demo.daos.mysql;
 
-import com.example.demo.daos.mongo.DAOGets;
 import com.example.demo.dtos.Consulta1Dtos;
 
 import java.sql.*;
@@ -11,7 +10,7 @@ public class DAO {
 
     private String dbUrl = "jdbc:mysql://localhost:3306/juegosolimpicos?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private String dbUser = "root";
-    private String dbPass = "root";
+    private String dbPass = "Qindel1234";
 
     public List<Consulta1Dtos> get() {
         List<Consulta1Dtos> list = new ArrayList<>();
@@ -22,8 +21,8 @@ public class DAO {
                              "    WHEN C.id_ciudad = S.sede THEN T.descripcion_tipo\n" +
                              "    ELSE \"NULL\"\n" +
                              "END as descripcion_tipo, count(DISTINCT S.año) as veces_sede\n" +
-                             "FROM pais P, tipo_jjoo T, Ciudad C \n" +
-                             "LEFT JOIN sede_jjoo S ON C.id_ciudad = S.sede\n" +
+                             "FROM Pais P, Tipo_jjoo T, Ciudad C \n" +
+                             "LEFT JOIN Sede_jjoo S ON C.id_ciudad = S.sede\n" +
                              "WHERE P.id_pais = C.id_pais \n" +
                              "group by C.id_ciudad")) {
             try (ResultSet result = statement.executeQuery()) {
@@ -43,7 +42,6 @@ public class DAO {
                     list.add(x);
                 }
             }
-            statement.close();
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();

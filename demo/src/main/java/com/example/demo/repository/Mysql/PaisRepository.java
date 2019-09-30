@@ -1,4 +1,4 @@
-package com.example.demo.repository;
+package com.example.demo.repository.Mysql;
 
 import com.example.demo.entities.Pais;
 import org.springframework.data.jpa.repository.JpaRepository;

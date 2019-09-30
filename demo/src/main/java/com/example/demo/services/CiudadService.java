@@ -1,7 +1,7 @@
 package com.example.demo.services;
 
 import com.example.demo.entities.Ciudad;
-import com.example.demo.repository.CiudadRepository;
+import com.example.demo.repository.Mysql.CiudadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,7 +20,6 @@ public class CiudadService {
     }
 
     public Optional<Ciudad> findById(Integer id) {
-        Optional<Ciudad> ciudadOptional = ciudadRepository.findById(id);
-        return ciudadOptional;
+        return ciudadRepository.findById(id);
     }
 }

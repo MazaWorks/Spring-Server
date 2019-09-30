@@ -39,7 +39,7 @@ public class SedeJJOOController {
     ResponseEntity getConsulta(){
         DAO dao = new DAO();
         List<Consulta1Dtos> toret = dao.get();
-        daoGets.create(toret, HttpStatus.OK.toString());
+    //    daoGets.create(toret, HttpStatus.OK.toString());
         return new ResponseEntity(toret, HttpStatus.OK);
     }
 
@@ -47,10 +47,10 @@ public class SedeJJOOController {
     ResponseEntity get(){
         Optional<List> toret = sedeJJOOService.findAll();
         if(toret.isPresent()) {
-            daoGets.create(toret.get(), HttpStatus.OK.toString());
+    //        daoGets.create(toret.get(), HttpStatus.OK.toString());
             return new ResponseEntity(toret.get(), HttpStatus.OK);
         } else {
-            daoGets.create(HttpStatus.NOT_FOUND.toString());
+    //        daoGets.create(HttpStatus.NOT_FOUND.toString());
             return new ResponseEntity("ERROR: Juego Olímpico no encontrado", HttpStatus.NOT_FOUND);
         }
     }
@@ -59,10 +59,10 @@ public class SedeJJOOController {
     ResponseEntity getPais() {
         Optional<List> toret = paisService.findAll();
         if(toret.isPresent()) {
-            daoGets.create(toret.get(), HttpStatus.OK.toString());
+     //       daoGets.create(toret.get(), HttpStatus.OK.toString());
             return new ResponseEntity(toret.get(), HttpStatus.OK);
         } else {
-            daoGets.create(HttpStatus.NOT_FOUND.toString());
+    //        daoGets.create(HttpStatus.NOT_FOUND.toString());
             return new ResponseEntity("ERROR: Pais no encontrado", HttpStatus.NOT_FOUND);
         }
     }
@@ -71,10 +71,10 @@ public class SedeJJOOController {
     ResponseEntity getAll(){
         Optional<List> toret = sedeJJOOService.findAllFull();
         if(toret.isPresent()) {
-            daoGets.create(toret.get(), HttpStatus.OK.toString());
+    //        daoGets.create(toret.get(), HttpStatus.OK.toString());
             return new ResponseEntity(toret.get(), HttpStatus.OK);
         } else {
-            daoGets.create(HttpStatus.NOT_FOUND.toString());
+    //        daoGets.create(HttpStatus.NOT_FOUND.toString());
             return new ResponseEntity("ERROR: Juego Olímpico no encontrado", HttpStatus.NOT_FOUND);
         }
     }
@@ -83,10 +83,10 @@ public class SedeJJOOController {
     ResponseEntity one(@PathVariable Integer año, @PathVariable Integer id_tipo_JJOO){
         Optional toret = sedeJJOOService.findById(año, id_tipo_JJOO);
         if(toret.isPresent()) {
-            daoGets.create((SedeJJOODtos) toret.get(), HttpStatus.OK.toString());
+    //        daoGets.create((SedeJJOODtos) toret.get(), HttpStatus.OK.toString());
             return new ResponseEntity(toret.get(), HttpStatus.OK);
         } else {
-            daoGets.create(HttpStatus.NOT_FOUND.toString());
+     //       daoGets.create(HttpStatus.NOT_FOUND.toString());
             return new ResponseEntity("ERROR: El año y/o tipo del juego olímpico no ha sido encontrado", HttpStatus.NOT_FOUND);
         }
     }
@@ -97,19 +97,19 @@ public class SedeJJOOController {
             if(sedeJJOOService.findById(año, id_tipo_JJOO).isPresent()) {
                 if(sedeJJOOService.save(sedeJJOO).isPresent()){
                     SedeJJOODtos toret = (SedeJJOODtos) sedeJJOOService.save(sedeJJOO).get();
-                    daoPosts.create(toret, HttpStatus.OK.toString());
+      //              daoPosts.create(toret, HttpStatus.OK.toString());
                     return new ResponseEntity(toret, HttpStatus.OK);
                 } else {
-                    daoPosts.create(HttpStatus.NOT_FOUND.toString());
+      //              daoPosts.create(HttpStatus.NOT_FOUND.toString());
                     return new ResponseEntity("ERROR: Ciudad no encontrada", HttpStatus.NOT_FOUND);
                 }
             }
             else {
-                daoPosts.create(HttpStatus.NOT_FOUND.toString());
+      //          daoPosts.create(HttpStatus.NOT_FOUND.toString());
                 return new ResponseEntity("ERROR: El año y/o tipo del juego olímpico no ha sido encontrado", HttpStatus.NOT_FOUND);
             }
         } else{
-            daoPosts.create(HttpStatus.BAD_REQUEST.toString());
+      //      daoPosts.create(HttpStatus.BAD_REQUEST.toString());
             return new ResponseEntity("ERROR: Los campos de la URL no coinciden con los del BODY", HttpStatus.BAD_REQUEST);
         }
     }
@@ -118,20 +118,20 @@ public class SedeJJOOController {
     ResponseEntity post(@RequestBody SedeJJOODtos sedeJJOO, @PathVariable Integer año, @PathVariable Integer id_tipo_JJOO) throws Exception {
         if(año == sedeJJOO.getAño() && id_tipo_JJOO == sedeJJOO.getIdTipoJJOO()){
             if(sedeJJOOService.findById(año, id_tipo_JJOO).isPresent()){
-                daoPosts.create(HttpStatus.BAD_REQUEST.toString());
+      //          daoPosts.create(HttpStatus.BAD_REQUEST.toString());
                 return new ResponseEntity("ERROR: Este id ya existe, solo se puede modificar", HttpStatus.FOUND);
             } else {
                 if (sedeJJOOService.save(sedeJJOO).isPresent()) {
                     SedeJJOODtos toret = (SedeJJOODtos) sedeJJOOService.save(sedeJJOO).get();
-                    daoPosts.create(toret, HttpStatus.OK.toString());
+      //              daoPosts.create(toret, HttpStatus.OK.toString());
                     return new ResponseEntity(toret, HttpStatus.OK);
                 } else {
-                    daoPosts.create(HttpStatus.NOT_FOUND.toString());
+                  //  daoPosts.create(HttpStatus.NOT_FOUND.toString());
                     return new ResponseEntity("ERROR: Ciudad y/o ID del Tipo de juego olímpico no encontrado", HttpStatus.NOT_FOUND);
                 }
             }
         } else {
-            daoPosts.create(HttpStatus.BAD_REQUEST.toString());
+           // daoPosts.create(HttpStatus.BAD_REQUEST.toString());
             return new ResponseEntity("ERROR: Los campos de la URL no coinciden con los del BODY", HttpStatus.BAD_REQUEST);
         }
     }
@@ -141,20 +141,20 @@ public class SedeJJOOController {
         if(año.equals(sedeFullJJOO.getAño()) && id_tipo_JJOO.equals(sedeFullJJOO.getIdTipoJJOO())){
             if(sedeJJOOService.findById(año, id_tipo_JJOO).isPresent()){
                 sedeJJOOService.findById(año, id_tipo_JJOO);
-                daoPosts.create(HttpStatus.BAD_REQUEST.toString());
+             //   daoPosts.create(HttpStatus.BAD_REQUEST.toString());
                 return new ResponseEntity("ERROR: Este id ya existe, solo se puede modificar", HttpStatus.FOUND);
             } else {
                 if(sedeJJOOService.save(sedeFullJJOO).isPresent()) {
                     SedeJJOOFullDtos toret = (SedeJJOOFullDtos) sedeJJOOService.save(sedeFullJJOO).get();
-                    daoPosts.create(toret, HttpStatus.OK.toString());
+               //     daoPosts.create(toret, HttpStatus.OK.toString());
                     return new ResponseEntity(toret, HttpStatus.OK);
                 } else {
-                    daoPosts.create(HttpStatus.NOT_FOUND.toString());
+               //     daoPosts.create(HttpStatus.NOT_FOUND.toString());
                     return new ResponseEntity("ERROR: Ciudad y/o ID del Tipo de juego olímpico no encontrado", HttpStatus.NOT_FOUND);
                 }
             }
         } else {
-            daoPosts.create(HttpStatus.BAD_REQUEST.toString());
+          //  daoPosts.create(HttpStatus.BAD_REQUEST.toString());
             return new ResponseEntity("ERROR: Los campos de la URL no coinciden con los del BODY", HttpStatus.BAD_REQUEST);
         }
     }
@@ -163,11 +163,11 @@ public class SedeJJOOController {
     ResponseEntity deleteSedeJJOO(@PathVariable Integer año, @PathVariable Integer id_tipo_JJOO) {
         if(sedeJJOOService.findById(año, id_tipo_JJOO).isPresent()) {
             sedeJJOOService.deleteById(año, id_tipo_JJOO);
-            daoDelete.create(año, id_tipo_JJOO, HttpStatus.OK.toString());
+         //   daoDelete.create(año, id_tipo_JJOO, HttpStatus.OK.toString());
             return new ResponseEntity(HttpStatus.OK);
         }
         else {
-            daoDelete.create(HttpStatus.NOT_FOUND.toString());
+        //    daoDelete.create(HttpStatus.NOT_FOUND.toString());
             return new ResponseEntity("ERROR: Sede no encontrada", HttpStatus.NOT_FOUND);
         }
     }
@@ -176,11 +176,11 @@ public class SedeJJOOController {
     ResponseEntity deleteCiudad(@PathVariable("id") Integer id) {
         if(ciudadService.findById(id).isPresent()) {
             ciudadService.deleteById(id);
-            daoDelete.create(id, HttpStatus.OK.toString());
+        //    daoDelete.create(id, HttpStatus.OK.toString());
             return new ResponseEntity(HttpStatus.OK);
         }
         else {
-            daoDelete.create(HttpStatus.NOT_FOUND.toString());
+         //   daoDelete.create(HttpStatus.NOT_FOUND.toString());
             return new ResponseEntity("ERROR: Ciudad no encontrada", HttpStatus.NOT_FOUND);
         }
     }

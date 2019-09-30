@@ -1,10 +1,9 @@
 package com.example.demo.entities;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
-@Table(name = "tipo_jjoo")
+@Table(name = "Tipo_jjoo")
 public class TipoJJOO {
 
     @Id

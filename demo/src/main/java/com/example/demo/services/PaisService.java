@@ -2,7 +2,7 @@ package com.example.demo.services;
 
 import com.example.demo.dtos.PaisDtos;
 import com.example.demo.entities.Pais;
-import com.example.demo.repository.PaisRepository;
+import com.example.demo.repository.Mysql.PaisRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,10 +1,9 @@
 package com.example.demo.entities;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
-@Table(name = "ciudad")
+@Table(name = "Ciudad")
 public class Ciudad {
 
     @Id
@@ -20,17 +19,6 @@ public class Ciudad {
     @ManyToOne
     @JoinColumn(name = "id_pais")
     private Pais pais;
-
-    @OneToMany(targetEntity = SedeJJOO.class, mappedBy = "ciudadSede")
-    private List<SedeJJOO> sedesJJOO;
-
-    public Ciudad(Integer idCiudad, Integer valorCiudad, String nombreCiudad, Pais pais, List<SedeJJOO> sedesJJOO) {
-        this.idCiudad = idCiudad;
-        this.valorCiudad = valorCiudad;
-        this.nombreCiudad = nombreCiudad;
-        this.pais = pais;
-        this.sedesJJOO = sedesJJOO;
-    }
 
     public Ciudad(Integer idCiudad, Integer valorCiudad, String nombreCiudad, Pais pais) {
         this.idCiudad = idCiudad;
@@ -58,10 +46,6 @@ public class Ciudad {
         return pais;
     }
 
-    public List<SedeJJOO> getSedesJJOO() {
-        return sedesJJOO;
-    }
-
     public void setIdCiudad(Integer idCiudad) {
         this.idCiudad = idCiudad;
     }
@@ -76,9 +60,5 @@ public class Ciudad {
 
     public void setPais(Pais pais) {
         this.pais = pais;
-    }
-
-    public void setSedesJJOO(List<SedeJJOO> sedesJJOO) {
-        this.sedesJJOO = sedesJJOO;
     }
 }
