@@ -24,14 +24,8 @@ Este servidor se ha creado usando estas tecnologías:
 
 Precondicion: Antes de lanzar la aplicación hay que asegurar que se tiene instalado mysql.    
 
-Hay muchas formas de lanzar el servidor.
-La primera sería simplemente importar el proyecto y ejecutar el main en el Intellij IDEA y spring boot se encargará del resto.
-
-La otra es mas facil aún, justo en el directorio principal hay un fichero .jar que se puede ejecutar con el comando:
-```sh
-$ java -jar gs-mysql-data-0.1.0.jar
-```
-Presionamos Ctrl+C para detener la aplicación
+Para lanzar el servidor , se debe importar el proyecto y ejecutar el main en el Intellij IDEA y spring boot se encargará del resto.
+Para crear un .jar, se debe usar la opcion package de maven.
 
 Una vez tengamos el servidor funcionando damos doble click en el archivo SwtQindel.jar que nos abrirá la aplicación
 

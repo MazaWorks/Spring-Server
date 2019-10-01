@@ -7,5 +7,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SedeJJOORepository extends JpaRepository<SedeJJOO, SedeJJOOPK> {
-
 }

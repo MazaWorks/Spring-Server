@@ -36,7 +36,6 @@ public class DAOConsulta {
                     valor = result.getInt(5);
                     descripcionTipo = result.getString(6);
                     vecesSedes = result.getInt(7);
-                    System.out.println(idPais + "\t" + nombrePais + "\t" + idCiudad + "\t" + nombreCiudad + "\t" + valor + "\t" + descripcionTipo + "\t" + vecesSedes);
 
                     Consulta1Dtos x = new Consulta1Dtos(idPais, nombrePais, idCiudad, nombreCiudad, valor, descripcionTipo, vecesSedes);
                     list.add(x);
