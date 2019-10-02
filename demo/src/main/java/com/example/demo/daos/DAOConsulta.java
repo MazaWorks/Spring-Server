@@ -1,12 +1,19 @@
 package com.example.demo.daos;
 
 import com.example.demo.dtos.Consulta1Dtos;
+import com.example.demo.entities.Mongo.GET;
+import com.example.demo.repository.Mongo.GetRepository;
+import org.bson.types.ObjectId;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DAOConsulta {
+
+    @Autowired
+    private GetRepository getRepository;
 
     private String dbUrl = "jdbc:mysql://localhost:3306/juegosolimpicos?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private String dbUser = "root";
@@ -47,5 +54,4 @@ public class DAOConsulta {
         }
         return list;
     }
-
 }

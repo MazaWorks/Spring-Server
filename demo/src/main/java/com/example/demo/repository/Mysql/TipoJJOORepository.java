@@ -1,6 +1,6 @@
 package com.example.demo.repository.Mysql;
 
-import com.example.demo.entities.TipoJJOO;
+import com.example.demo.entities.Mysql.TipoJJOO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

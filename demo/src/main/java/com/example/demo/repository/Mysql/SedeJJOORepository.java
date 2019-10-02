@@ -1,7 +1,7 @@
 package com.example.demo.repository.Mysql;
 
-import com.example.demo.entities.SedeJJOO;
-import com.example.demo.entities.SedeJJOOPK;
+import com.example.demo.entities.Mysql.SedeJJOO;
+import com.example.demo.entities.Mysql.SedeJJOOPK;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

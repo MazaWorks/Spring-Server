@@ -1,6 +1,6 @@
 package com.example.demo.repository.Mysql;
 
-import com.example.demo.entities.Pais;
+import com.example.demo.entities.Mysql.Pais;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
