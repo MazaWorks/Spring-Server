@@ -12,7 +12,6 @@ import com.example.demo.repository.Mysql.SedeJJOORepository;
 import com.example.demo.repository.Mysql.TipoJJOORepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,9 +21,9 @@ import java.util.*;
 @Transactional
 public class SedeJJOOService {
 
-    @Autowired
+/*    @Autowired
     private LogService logService;
-
+*/
     @Autowired
     private SedeJJOORepository sedeJJOORepository;
 
@@ -46,11 +45,11 @@ public class SedeJJOOService {
             SedeJJOODtos sedeJJOODtos = new SedeJJOODtos(sedeJJOO.getSedeJJOOPK().getAño(), sedeJJOO.getSedeJJOOPK().getTipoJJOO().getIdTipoJJOO(), sedeJJOO.getCiudadSede().getIdCiudad());
             toret.add(sedeJJOODtos);
         }
-        if(toret.size() == 0)
+/*        if(toret.size() == 0)
             logService.getLog(toret, HttpStatus.OK.toString());
         else
             logService.getLog(toret, HttpStatus.OK.toString());
-        return toret;
+*/        return toret;
     }
 
     public List findAllFull() {
@@ -64,11 +63,11 @@ public class SedeJJOOService {
             SedeJJOOFullDtos sedeJJOOFullDtos = new SedeJJOOFullDtos(sedeJJOO.getSedeJJOOPK().getAño(), sedeJJOO.getSedeJJOOPK().getTipoJJOO().getIdTipoJJOO(), ciudadFullDtos);
             toret.add(sedeJJOOFullDtos);
         }
-        if(toret.size() == 0)
+/*        if(toret.size() == 0)
             logService.getLog(toret, HttpStatus.OK.toString());
         else
             logService.getLog(toret, HttpStatus.OK.toString());
-        return toret;
+*/        return toret;
     }
 
     public Optional save(SedeJJOODtos sedeJJOODtos) {
@@ -118,17 +117,17 @@ public class SedeJJOOService {
             if(sedeJJOOOptional.isPresent()) {
                 SedeJJOO sedeJJOO = (SedeJJOO) sedeJJOOOptional.get();
                 SedeJJOODtos sedeJJOODtos = new SedeJJOODtos(sedeJJOO.getSedeJJOOPK().getAño(), sedeJJOO.getSedeJJOOPK().getTipoJJOO().getIdTipoJJOO(), sedeJJOO.getCiudadSede().getIdCiudad());
-                List<SedeJJOODtos> log = new ArrayList<>();
-                log.add(sedeJJOODtos);
-                logService.getLog(log , HttpStatus.OK.toString());
+//                List<SedeJJOODtos> log = new ArrayList<>();
+//                log.add(sedeJJOODtos);
+//                logService.getLog(log , HttpStatus.OK.toString());
                 return Optional.of(sedeJJOODtos);
             }
             else {
-                logService.getLog(null, HttpStatus.NOT_FOUND.toString());
+//                logService.getLog(null, HttpStatus.NOT_FOUND.toString());
                 return sedeJJOOOptional;
             }
         } else {
-            logService.getLog(null, HttpStatus.NOT_FOUND.toString());
+ //           logService.getLog(null, HttpStatus.NOT_FOUND.toString());
             return optionalTipoJJOO;
         }
     }
@@ -136,14 +135,14 @@ public class SedeJJOOService {
     public boolean deleteById(Integer id, Integer idTipoJJOO) {
         boolean toret = false;
         if(findById(id, idTipoJJOO).isPresent()){
-            IdsDtos log = new IdsDtos(null, id, idTipoJJOO);
+//            IdsDtos log = new IdsDtos(null, id, idTipoJJOO);
             TipoJJOO tipoJJOO = tipoJJOORepository.findById(idTipoJJOO).get();
             SedeJJOOPK sedeJJOOPK = new SedeJJOOPK(id, tipoJJOO);
             sedeJJOORepository.deleteById(sedeJJOOPK);
-            logService.deleteLog(log, HttpStatus.OK.toString());
+//            logService.deleteLog(log, HttpStatus.OK.toString());
             toret = true;
-        } else
-            logService.deleteLog(null, HttpStatus.NOT_FOUND.toString());
+        }// else
+//            logService.deleteLog(null, HttpStatus.NOT_FOUND.toString());
         return toret;
     }
 }

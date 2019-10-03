@@ -20,9 +20,9 @@ import java.util.Optional;
 @RequestMapping("/")
 public class SedeJJOOController {
 
-    @Autowired
+/*    @Autowired
     private LogService logService;
-
+*/
     @Autowired
     private SedeJJOOService sedeJJOOService;
 
@@ -82,19 +82,19 @@ public class SedeJJOOController {
             if(sedeJJOOService.findById(año, id_tipo_JJOO).isPresent()) {
                 if(sedeJJOOService.save(sedeJJOO).isPresent()){
                     SedeJJOODtos toret = (SedeJJOODtos) sedeJJOOService.save(sedeJJOO).get();
-                    logService.postLog(toret, null,  HttpStatus.OK.toString());
+//                    logService.postLog(toret, null,  HttpStatus.OK.toString());
                     return new ResponseEntity(toret, HttpStatus.OK);
                 } else {
-                    logService.postLog(null, null, HttpStatus.NOT_FOUND.toString());
+//                    logService.postLog(null, null, HttpStatus.NOT_FOUND.toString());
                     return new ResponseEntity("ERROR: Ciudad no encontrada", HttpStatus.NOT_FOUND);
                 }
             }
             else {
-                logService.postLog(null, null, HttpStatus.NOT_FOUND.toString());
+//                logService.postLog(null, null, HttpStatus.NOT_FOUND.toString());
                 return new ResponseEntity("ERROR: El año y/o tipo del juego olímpico no ha sido encontrado", HttpStatus.NOT_FOUND);
             }
         } else {
-            logService.postLog(null,null, HttpStatus.BAD_REQUEST.toString());
+ //           logService.postLog(null,null, HttpStatus.BAD_REQUEST.toString());
             return new ResponseEntity("ERROR: Los campos de la URL no coinciden con los del BODY", HttpStatus.BAD_REQUEST);
         }
     }
@@ -103,20 +103,20 @@ public class SedeJJOOController {
     ResponseEntity post(@RequestBody SedeJJOODtos sedeJJOO, @PathVariable Integer año, @PathVariable Integer id_tipo_JJOO) throws Exception {
         if(año == sedeJJOO.getAño() && id_tipo_JJOO == sedeJJOO.getIdTipoJJOO()){
             if(sedeJJOOService.findById(año, id_tipo_JJOO).isPresent()){
-                logService.postLog(null,null, HttpStatus.BAD_REQUEST.toString());
+ //               logService.postLog(null,null, HttpStatus.BAD_REQUEST.toString());
                 return new ResponseEntity("ERROR: Este id ya existe, solo se puede modificar", HttpStatus.FOUND);
             } else {
                 if (sedeJJOOService.save(sedeJJOO).isPresent()) {
                     SedeJJOODtos toret = (SedeJJOODtos) sedeJJOOService.save(sedeJJOO).get();
-                    logService.postLog(toret,null, HttpStatus.OK.toString());
+  //                  logService.postLog(toret,null, HttpStatus.OK.toString());
                     return new ResponseEntity(toret, HttpStatus.OK);
                 } else {
-                    logService.postLog(null,null, HttpStatus.NOT_FOUND.toString());
+  //                  logService.postLog(null,null, HttpStatus.NOT_FOUND.toString());
                     return new ResponseEntity("ERROR: Ciudad y/o ID del Tipo de juego olímpico no encontrado", HttpStatus.NOT_FOUND);
                 }
             }
         } else {
-            logService.postLog(null,null, HttpStatus.BAD_REQUEST.toString());
+//            logService.postLog(null,null, HttpStatus.BAD_REQUEST.toString());
             return new ResponseEntity("ERROR: Los campos de la URL no coinciden con los del BODY", HttpStatus.BAD_REQUEST);
         }
     }
@@ -126,20 +126,20 @@ public class SedeJJOOController {
         if(año.equals(sedeFullJJOO.getAño()) && id_tipo_JJOO.equals(sedeFullJJOO.getIdTipoJJOO())){
             if(sedeJJOOService.findById(año, id_tipo_JJOO).isPresent()){
                 sedeJJOOService.findById(año, id_tipo_JJOO);
-                logService.postLog(null,null, HttpStatus.BAD_REQUEST.toString());
+ //               logService.postLog(null,null, HttpStatus.BAD_REQUEST.toString());
                 return new ResponseEntity("ERROR: Este id ya existe, solo se puede modificar", HttpStatus.FOUND);
             } else {
                 if(sedeJJOOService.save(sedeFullJJOO).isPresent()) {
                     SedeJJOOFullDtos toret = (SedeJJOOFullDtos) sedeJJOOService.save(sedeFullJJOO).get();
-                    logService.postLog(null, toret, HttpStatus.OK.toString());
+ //                   logService.postLog(null, toret, HttpStatus.OK.toString());
                     return new ResponseEntity(toret, HttpStatus.OK);
                 } else {
-                    logService.postLog(null,null, HttpStatus.NOT_FOUND.toString());
+ //                   logService.postLog(null,null, HttpStatus.NOT_FOUND.toString());
                     return new ResponseEntity("ERROR: Ciudad y/o ID del Tipo de juego olímpico no encontrado", HttpStatus.NOT_FOUND);
                 }
             }
         } else {
-            logService.postLog(null,null, HttpStatus.BAD_REQUEST.toString());
+//            logService.postLog(null,null, HttpStatus.BAD_REQUEST.toString());
             return new ResponseEntity("ERROR: Los campos de la URL no coinciden con los del BODY", HttpStatus.BAD_REQUEST);
         }
     }
