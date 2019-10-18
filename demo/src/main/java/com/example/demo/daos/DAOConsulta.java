@@ -17,7 +17,7 @@ public class DAOConsulta {
 
     private String dbUrl = "jdbc:mysql://localhost:3306/juegosolimpicos?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private String dbUser = "root";
-    private String dbPass = "Qindel1234";
+    private String dbPass = "root";
 
     public List<Consulta1Dtos> get() {
         List<Consulta1Dtos> list = new ArrayList<>();
@@ -48,7 +48,7 @@ public class DAOConsulta {
                     list.add(x);
                 }
             }
-            connection.close();
+            statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
